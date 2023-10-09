@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="layout/page-layout.html :: view-head"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/background.css}">
+</head>
+<body>
+<th:block th:replace="layout/page-layout.html :: page-header(page='car')"/>
+<div class="container-fluid text-center">
+
+
+
+    <p th:if="${errMessage != null}" class="alert alert-danger">
+        [[${errMessage}]]
+    </p>
+    <p th:if="${successMessage != null}"class="alert alert-success">
+        [[${successMessage}]]
+    </p>
+<div class="m-2"></div>
+<!--Таблица автомобилей -->
+<div class="col-sm-8 text-center container-fluid ">
+    <table class="table table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th colspan="4">
+                <h1 class="display-3">Список автомобилей</h1>
+            </th>
+        </tr>
+            <tr>
+                <th>ID</th>
+                <th>Машина</th>
+                <th>Регистрационный номер</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car: ${cars}">
+            <td>[[${car.id}]]</td>
+            <td>
+              <a th:href="@{'/car/' + ${car.id}}">[[${car.name}]]</a>
+            </td>
+            <td>[[${car.registrationPlate}]]</td>
+            <td>
+                <a th:href="@{'/car/delete/' + ${car.id}}" class="btn btn-danger">
+                    Удалить
+                </a>
+                <a th:href="@{'/car/update/' + ${car.id}}" class="btn btn-primary">
+                    Редактировать
+                </a>
+            </td>
+        </tr>
+        <tr th:if="${cars == null}">
+            <td colspan="4">Не записей</td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div>
+    <a th:href="@{/car/new}" class="btn btn-success form-control">Добавить автомобиль</a>
+
+    </div>
+    </div>
+</div>
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+
+</body>
+</html>

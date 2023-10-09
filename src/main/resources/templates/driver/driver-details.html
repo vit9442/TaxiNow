@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="layout/page-layout.html :: view-head"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/background.css}">
+</head>
+<body>
+<th:block th:replace="layout/page-layout.html :: page-header(page='driver')"/>
+<div class="card">
+  <div class="card-header">
+    Информация о водителе
+  </div>
+  <div th:if="${driver != null}" class="card-body">
+    <h5 class="card-title">[[${driver.name}]]</h5>
+    <p class="card-text">id: [[${driver.id}]].</p>
+    <p class="card-text">Номер телефона: [[${driver.phoneNumber}]].</p>
+    <p class="card-text">Возраст: [[${driver.age}]].</p>
+    Автомобиль: <a th:href="@{'/car/' + ${driver.car.id}}" class="card-text"> [[${driver.car.name}]].</a>
+    <p><a th:href="@{/driver}" class="btn btn-primary">К списку водителей</a></p>
+  </div>
+  <div th:if="${driver == null}" class="card-body">
+    <h5 class="card-title">Водитель отсутствует</h5>
+    <a th:href="@{/driver}" class="btn btn-primary">К списку водителей</a>
+  </div>
+</div>
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

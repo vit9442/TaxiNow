@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TaxiNow</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+
+</head>
+<body>
+
+<th:block th:fragment="view-head">
+         <meta charset="UTF-8">
+         <title>TaxiNow</title>
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+ </th:block>
+
+<header th:fragment="page-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-bg-dark border-bottom border-2 border-black ">
+        <div class="navbar-brand" th:href="@{/}">
+        <img th:src="@{/images/logo2.png}" width="150" height="120">
+            </div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='index'? 'active': ''}" th:href="@{/}">Домашняя</a>
+                <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='car'? 'active': ''}" th:href="@{/car}">Автомобили</a>
+                <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='driver'? 'active': ''}" th:href="@{/driver}">Водители</a>
+                <a class="nav-item nav-link text-light fs-3" th:href="@{/dispatcher}">Диспетчеры</a>
+            </div>
+        </div>
+        <form class="d-flex" role="search" method="post" th:action="@{/logout}">
+            <button class="btn btn-secondary m-2">Выйти</button>
+
+        </form>
+    </nav>
+</header>
+
+<footer th:fragment="page-footer" class="container-fluid text-center fixed-bottom text-bg-dark p-4">
+    <h4>Автор Свирский В.В. &copy;</h4>
+</footer>
+</body>
