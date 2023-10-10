@@ -5,20 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.top.taxinow.entity.Dispatchers;
+import org.top.taxinow.entity.User;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
 @Service
 @Getter
 @Setter
-public class DispatcherDetails implements UserDetails {
+public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
 
-    private Dispatchers dispatchers;
+    private User dispatchers;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>TaxiNow</title>
@@ -30,9 +30,12 @@
                 <a class="nav-item nav-link text-light fs-3" th:href="@{/dispatcher}">Диспетчеры</a>
             </div>
         </div>
-        <form class="d-flex" role="search" method="post" th:action="@{/logout}">
+        <form sec:authorize="isAuthenticated()" class="d-flex align-items-center" role="search" method="post" th:action="@{/logout}">
+            <span class="badge badge-secondary" th:text="${#authentication.getPrincipal().getUsername()}"></span>
             <button class="btn btn-secondary m-2">Выйти</button>
-
+        </form>
+        <form sec:authorize="!isAuthenticated()" class="d-flex" role="search" method="post" th:action="@{/login}">
+            <button class="btn btn-secondary m-2">Войти</button>
         </form>
     </nav>
 </header>
