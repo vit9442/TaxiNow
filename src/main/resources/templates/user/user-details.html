@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="layout/page-layout.html :: view-head"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/background.css}">
+</head>
+<body>
+<th:block th:replace="layout/page-layout.html :: page-header(page='user')"/>
+<div class="card">
+  <div class="card-header">
+    Информация о диспетчере
+  </div>
+  <div th:if="${user != null}" class="card-body">
+    <h5 class="card-title">[[${user.name}]]</h5>
+    <p class="card-text">id: [[${user.id}]].</p>
+    <p class="card-text">Логин: [[${user.login}]].</p>
+
+    <p><a th:href="@{/user}" class="btn btn-primary">К списку диспетчеров</a></p>
+  </div>
+  <div th:if="${user == null}" class="card-body">
+    <h5 class="card-title">Диспетчер отсутствует</h5>
+    <a th:href="@{/user}" class="btn btn-primary">К списку диспетчеров</a>
+  </div>
+</div>
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

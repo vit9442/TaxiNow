@@ -17,13 +17,13 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name_t")
+    @Column(name = "name_t", nullable = false)
     private String name;
 
-    @Column(name = "registration_plate")
+    @Column(name = "registration_plate", nullable = false)
     private String registrationPlate;
 
-    @Column(name = "color_t")
+    @Column(name = "color_t", nullable = false)
     private String color;
 
     @OneToOne(mappedBy = "car")

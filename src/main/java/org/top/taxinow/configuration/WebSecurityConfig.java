@@ -39,6 +39,13 @@ public class WebSecurityConfig {
                                 "/car/new",
                                 "/car/delete/*",
                                 "/car/update/*",
+                                "/order/new",
+                                "/order/delete/*",
+                                "/order/update/*",
+                                "/user/new",
+                                "/user/delete/*",
+                                "/user/update/*",
+                                "/user",
                                 "/driver/new",
                                 "/driver/new/*"
                         ).hasRole("ADMIN")

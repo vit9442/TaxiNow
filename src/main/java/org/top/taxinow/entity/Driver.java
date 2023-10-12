@@ -22,19 +22,14 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name_f")
+    @Column(name = "name_f", nullable = false)
     private String name;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "age")
+    @Column(name = "age", nullable = false)
     private Integer age;
-
-    @Lob
-    @Column(name = "photo_f")
-    private byte[] photo;
-
 
     @OneToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="layout/page-layout.html :: view-head"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/background.css}">
+</head>
+<body>
+<th:block th:replace="layout/page-layout.html ::  page-header(page='order')"/>
+<div class="container-fluid text-center">
+
+  <p th:if="${errMessage != null}" class="alert alert-danger">
+    [[${errMessage}]]
+  </p>
+  <p th:if="${successMessage != null}"class="alert alert-success">
+    [[${successMessage}]]
+  </p>
+
+  <div class="m-2"></div>
+
+  <div class="col-sm-8 text-center container-fluid ">
+    <table class="table table table-striped">
+      <thead class="table-dark">
+      <tr>
+        <th colspan="6">
+          <h1 class="display-3">Список заказов</h1>
+        </th>
+      </tr>
+      <tr>
+        <th>ID</th>
+        <th>Начальный адресс</th>
+        <th>Место назначения</th>
+        <th>Стоймость</th>
+        <th>Время</th>
+        <th>Удалить/изменить</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="order: ${orders}">
+        <td>
+          <a th:href="@{'/order/' + ${order.id}}">[[${order.id}]]</a>
+        </td>
+        <td>
+          [[${order.initialAdress}]]
+        </td>
+        <td>[[${order.finalAdress}]]</td>
+        <td>[[${order.price}]]</td>
+        <td>[[${order.time}]]</td>
+        <td>
+          <a th:href="@{'/order/delete/' + ${order.id}}" class="btn btn-danger">
+            Удалить
+          </a>
+          <a th:href="@{'/order/update/' + ${order.id}}" class="btn btn-primary">
+            Редактировать
+          </a>
+        </td>
+      </tr>
+      <tr th:if="${drivers == null}">
+        <td colspan="6">Нет записей</td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <a th:href="@{/order/new}" class="btn btn-success form-control">Разместить заказ</a>
+    </div>
+  </div>
+</div>
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

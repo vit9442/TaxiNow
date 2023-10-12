@@ -10,6 +10,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -18,17 +19,20 @@ import java.util.UUID;
 public class TaxiOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "initial_adress_f")
+    @Column(name = "initial_adress_f", nullable = false)
     private String initialAdress;
 
-    @Column(name = "final_adress")
+    @Column(name = "final_adress_f", nullable = false)
     private String finalAdress;
 
-    @Column(name = "price")
+    @Column(name = "price_f", nullable = false)
     private Double price;
+
+    @Column(name = "time_F", nullable = false)
+    private String time;
 
     @OneToOne
     @JoinColumn(name = "driver_id", referencedColumnName = "id")

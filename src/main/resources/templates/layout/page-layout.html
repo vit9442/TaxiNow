@@ -27,7 +27,8 @@
                 <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='index'? 'active': ''}" th:href="@{/}">Домашняя</a>
                 <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='car'? 'active': ''}" th:href="@{/car}">Автомобили</a>
                 <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='driver'? 'active': ''}" th:href="@{/driver}">Водители</a>
-                <a class="nav-item nav-link text-light fs-3" th:href="@{/dispatcher}">Диспетчеры</a>
+                <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='user'? 'active': ''}" th:href="@{/user}">Диспетчеры</a>
+                <a class="nav-item nav-link text-light fs-3" th:classappend="${page=='order'? 'active': ''}" th:href="@{/order}">Заказы</a>
             </div>
         </div>
         <form sec:authorize="isAuthenticated()" class="d-flex align-items-center" role="search" method="post" th:action="@{/logout}">

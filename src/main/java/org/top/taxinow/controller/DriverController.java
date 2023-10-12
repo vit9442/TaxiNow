@@ -47,13 +47,7 @@ public class DriverController {
     }
 
     @PostMapping("new")
-    public String addDriver(Driver driver, @RequestParam("photo") MultipartFile photo, RedirectAttributes redirectAttributes){
-//       try{
-//           var encodedPhoto = Base64.getEncoder().encode(photo));
-//            driver.setPhoto(encodedPhoto);
-//        }catch (Exception ex){
-//           System.out.println("Исключение!");
-//       }
+    public String addDriver(Driver driver, RedirectAttributes redirectAttributes){
         Optional<Driver> newDriver = driverService.add(driver);
         if(newDriver.isPresent()){
             redirectAttributes.addFlashAttribute("successMessage", "Водитель " + driver.getName() + " успешно добавлен");
