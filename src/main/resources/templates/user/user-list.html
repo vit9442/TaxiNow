@@ -29,6 +29,7 @@
       <tr>
         <th>ID</th>
         <th>ФИО</th>
+        <th>Удалить/изменить</th>
       </tr>
       </thead>
       <tbody>
@@ -38,7 +39,7 @@
         </td>
         <td>
           <a th:href="@{'/user/' + ${user.id}}">[[${user.name}]]</a>
-        <td>
+        </td>
         <td>
           <a th:href="@{'/user/delete/' + ${user.id}}" class="btn btn-danger">
             Удалить

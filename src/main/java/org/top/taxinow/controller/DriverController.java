@@ -7,17 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.top.taxinow.entity.Car;
 import org.top.taxinow.entity.Driver;
 import org.top.taxinow.service.impl.CarServiceImpl;
 import org.top.taxinow.service.impl.DriverServiceImpl;
 
-import java.util.Base64;
+import java.util.ArrayList;
 import java.util.Optional;
-import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("driver")
@@ -41,8 +39,8 @@ public class DriverController {
     public String addDriver(Model model){
         Driver driver = new Driver();
         model.addAttribute("driver", driver);
-        Iterable<Car> carList = carService.findAll();
-        model.addAttribute("cars", carList);
+        ArrayList<Car> carList = (ArrayList<Car>) carService.findAll();
+        model.addAttribute("cars", carList.stream().filter(car -> car.getDriver() == null).collect(Collectors.toList()));
         return "driver/new-driver-form";
     }
 

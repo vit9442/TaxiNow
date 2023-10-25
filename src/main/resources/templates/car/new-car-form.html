@@ -6,31 +6,31 @@
 </head>
 <body>
 <th:block th:replace="layout/page-layout.html :: page-header(page='car')"/>
-<div class="container-fluid text-center col-sm-10">
-    <h1 class="display-3">Добавить автомобиль</h1>
-    <form method="post" th:action="@{/car/new}" th:object="${car}">
+<div class="mt-2 row mx-auto container-fluid text-center col-sm-6 border-white bg-dark pb-5">
+    <h1 class="text-center display-3 text-light">Добавить автомобиль</h1>
+    <form class="ml-3 text-center mx-auto" method="post" th:action="@{/car/new}" th:object="${car}">
 
-        <div class="d-flex">
-            <label class="col-sm-1 col-form-label" for="name">Марка автомобиля:</label>
+        <div class="d-flex justify-content-center mx-auto">
+            <label class="col-sm-1 col-form-label text-light" for="name">Марка автомобиля:</label>
             <div class="col-sm-8">
-                <input class="form-control m-2" type="text" id="name" th:field="*{name}" required minlength="1">
+                <input class="form-control m-2 form-control bg-dark text-light" type="text" id="name" th:field="*{name}" required minlength="1" placeholder="Марка">
             </div>
         </div>
-        <div class="d-flex">
-            <label class="col-sm-1 col-form-label" for="clr">Цвет:</label>
+        <div class="d-flex justify-content-center">
+            <label class="col-sm-1 col-form-label text-light" for="clr">Цвет:</label>
             <div class="col-sm-8">
-                <input class="form-control m-2 mb-4" type="text" id="clr" th:field="*{color}" required minlength="1">
-            </div>
-        </div>
-
-        <div class="d-flex">
-            <label class="col-sm-1 col-form-label" for="number">Номер автомобиля:</label>
-            <div class="col-sm-8">
-                <input class="form-control m-2 mb-4" type="text" id="number" th:field="*{registrationPlate}" required minlength="1">
+                <input class="form-control m-2 form-control bg-dark text-light" type="text" id="clr" th:field="*{color}" required minlength="1" placeholder="Цвет">
             </div>
         </div>
 
-<div class="mb-3 row d-flex">
+        <div class="d-flex justify-content-center">
+            <label class="col-sm-1 col-form-label text-light" for="number">Номер автомобиля:</label>
+            <div class="col-sm-8">
+                <input class="form-control m-2 mb-4 form-control bg-dark text-light" type="text" id="number" th:field="*{registrationPlate}" required minlength="1" placeholder="Номер автомобиля">
+            </div>
+        </div>
+
+<div class="mb-3 row d-flex justify-content-center" >
     <div class="col-sm-1"></div>
         <div class="col-sm-4">
             <button class="btn btn-success form-control">Добавить</button>
@@ -41,8 +41,8 @@
 </div>
 
     </form>
-
 </div>
+
 <th:block th:replace="layout/page-layout.html :: page-footer"/>
 </body>
 </html>

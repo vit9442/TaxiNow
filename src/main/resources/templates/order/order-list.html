@@ -54,13 +54,13 @@
           </a>
         </td>
       </tr>
-      <tr th:if="${drivers == null}">
+      <tr th:if="${orders == null}">
         <td colspan="6">Нет записей</td>
       </tr>
       </tbody>
     </table>
     <div>
-      <a th:href="@{/order/new}" class="btn btn-success form-control">Разместить заказ</a>
+      <a th:href="@{/order/new}" class="btn btn-secondary form-control">Разместить заказ</a>
     </div>
   </div>
 </div>

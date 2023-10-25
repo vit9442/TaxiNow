@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="layout/page-layout.html :: view-head"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/background.css}">
+</head>
+<body>
+<th:block th:replace="layout/page-layout.html ::  page-header(page='image')"/>
+<div class="mt-2 row mx-auto container-fluid text-center col-sm-6 border-white bg-dark pb-5">
+    <h1 class="display-3 text-light">Добавить фото</h1>
+    <form method="post" th:action="@{/image/new}" enctype="multipart/form-data">
+
+        <div class="d-flex justify-content-center gap-2">
+            <label class="col-sm-1 col-form-label text-light" for="image">Фото:</label>
+            <div class="col-sm-8">
+                <input class="form-control m-2 form-control bg-dark text-light" name="image" type="file" id="image">
+            </div>
+        </div>
+        <div class="mb-3 row d-flex justify-content-center">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+                <button class="btn btn-success form-control">Добавить</button>
+            </div>
+            <div class="col-sm-4">
+                <a th:href="@{/image}" class="btn btn-danger form-control">Отменить</a>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

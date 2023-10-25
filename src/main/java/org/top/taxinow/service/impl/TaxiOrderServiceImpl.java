@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class TaxiOrderServiceImpl implements TaxiOrderService {
 
     private final TaxiOrderRepository taxiOrderRepository;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Override
     public Iterable<TaxiOrder> findAll() {
@@ -46,7 +46,7 @@ public class TaxiOrderServiceImpl implements TaxiOrderService {
 
     @Override
     public Optional<TaxiOrder> add(TaxiOrder taxiOrder, LocalDateTime time) {
-        if (taxiOrder.getDriver().getTaxiOrder() == null) {
+        if (taxiOrder.getDriver().getTaxiOrder() == null && (ChronoUnit.MINUTES.between(LocalDateTime.now(), time) > 10)) {
             taxiOrder.setTime(time.format(formatter));
             return Optional.of(taxiOrderRepository.save(taxiOrder));
         }

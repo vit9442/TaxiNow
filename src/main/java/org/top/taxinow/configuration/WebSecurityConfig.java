@@ -47,7 +47,9 @@ public class WebSecurityConfig {
                                 "/user/update/*",
                                 "/user",
                                 "/driver/new",
-                                "/driver/new/*"
+                                "/driver/new/*",
+                                "/image/new",
+                                "/image/*"
                         ).hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin((form) -> form

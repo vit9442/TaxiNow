@@ -8,7 +8,6 @@ import org.top.taxinow.repository.DriverRepository;
 import org.top.taxinow.service.DriverService;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

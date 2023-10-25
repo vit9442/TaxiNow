@@ -6,7 +6,25 @@
 </head>
 <body>
 <th:block th:replace="layout/page-layout.html :: page-header(page='index')"/>
+<div class="container">
 
+<div class=" p-5 h-50 mt-5 align-middle border row align-items-center text-light text-center bg-dark display-5">
+    <div>
+    <img th:src="@{/images/logo2.png}" width="170" height="140">
+    </div>
+    TAXI NOW — ваш надежный партнер в любой ситуации! Удобное и быстрое такси к вашим услугам!
+    Забудьте о проблемах с перемещением по городу с нашим такси!
+    Мы предлагаем широкий выбор автомобилей разных классов и ценовых категорий для вашего комфорта!"
+    Закажите такси прямо сейчас и получите приятный бонус
+    Наши водители всегда вежливы и профессиональны, готовы помочь вам в любое время дня и ночи!
+    Наша компания предоставляет высокий уровень сервиса и безопасности на дороге, чтобы вы могли чувствовать себя
+    уверенно и безопасно во время поездки.
+    <div>
+        <a th:href="@{/order/new}" class="btn btn-secondary form-control">Разместить заказ</a>
+    </div>
+
+</div>
+</div>
 <th:block th:replace="layout/page-layout.html :: page-footer"/>
 
 </body>

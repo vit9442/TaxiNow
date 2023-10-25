@@ -2,44 +2,45 @@
 <html lang="en">
 <head>
     <th:block th:replace="layout/page-layout.html :: view-head"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/background.css}">
 
 </head>
 <body>
 <th:block th:replace="layout/page-layout.html :: page-header(page='index')"/>
 
-<div class="row col-sm-4 mt-4 border mx-auto">
-    <h2 class="text-center">Войти</h2>
+<div class="row col-sm-4 mt-4 border mx-auto bg-dark">
+    <h2 class="text-center text-light">Войти</h2>
     <form class="px-4 py-3 col-sm-4 w-30 mx-auto" method="post" th:action="@{/login}">
         <div class="form-group">
             <label for="login">Логин</label>
-            <input type="text" class="form-control" id="login" name="username" placeholder="логин">
+            <input type="text" class="form-control bg-dark text-light"  id="login" name="username" placeholder="логин" >
         </div>
         <div class="form-group">
             <label for="password">Пароль</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+            <input type="password" class="form-control bg-dark text-light" id="password" name="password" placeholder="Пароль">
         </div>
 
         <button type="submit" class="btn btn-primary mt-2">Войти</button>
     </form>
 
 
-<h2 class="text-center">Зарегистрироваться</h2>
+<h2 class="text-center text-light">Зарегистрироваться</h2>
 <form class="px-4 py-3 col-sm-4 w-30 mx-auto " method="post" th:action="@{/register}">
     <div class="form-group">
         <label for="login_reg">ФИО</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="фио">
+        <input type="text" class="form-control bg-dark text-light" id="name" name="name" placeholder="фио">
     </div>
     <div class="form-group">
         <label for="login_reg">Логин</label>
-        <input type="text" class="form-control" id="login_reg" name="login" placeholder="логин">
+        <input type="text" class="form-control bg-dark text-light" id="login_reg" name="login" placeholder="логин">
     </div>
     <div class="form-group">
         <label for="password_reg">Пароль</label>
-        <input type="password" class="form-control" id="password_reg" name="password" placeholder="Пароль">
+        <input type="password" class="form-control bg-dark text-light" id="password_reg" name="password" placeholder="Пароль">
     </div>
     <div class="form-group">
         <label for="password_reg_conf">Подтвердите пароль</label>
-        <input type="password" class="form-control" id="password_reg_conf" name="passwordConfirmation" placeholder="Пароль">
+        <input type="password" class="form-control bg-dark text-light" id="password_reg_conf" name="passwordConfirmation" placeholder="Пароль">
     </div>
     <button class="btn btn-primary mt-2">Зарегистрироваться</button>
 </form>

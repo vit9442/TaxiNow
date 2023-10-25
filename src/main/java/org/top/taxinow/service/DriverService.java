@@ -5,7 +5,6 @@ import org.top.taxinow.entity.Car;
 import org.top.taxinow.entity.Driver;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public interface DriverService {
