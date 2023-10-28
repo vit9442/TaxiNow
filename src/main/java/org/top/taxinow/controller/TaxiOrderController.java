@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -53,4 +54,17 @@ public class TaxiOrderController {
         return "redirect:/order";
     }
 
+
+    @GetMapping("/delete/{id}")
+    public String deleteByID(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+        Optional<TaxiOrder> removableOrder = taxiOrderService.deleteById(id);
+        if(removableOrder.isPresent()){
+            redirectAttributes.addFlashAttribute("successMessage", "Заказ № " + removableOrder.get().getId() + "был успешно удалён");
+            return "redirect:/order";
+        }
+        else {
+            redirectAttributes.addFlashAttribute("errMessage", "Заказ не был удалён");
+        }
+        return "redirect:/order";
+    }
 }

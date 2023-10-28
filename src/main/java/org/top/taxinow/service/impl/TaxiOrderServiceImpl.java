@@ -67,7 +67,7 @@ public class TaxiOrderServiceImpl implements TaxiOrderService {
     }
 
     @Override
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedDelay = 5, timeUnit = TimeUnit.MINUTES)
     public void checkOrders() {
         if (taxiOrderRepository.findAll().iterator().hasNext()) {
             for (TaxiOrder order : taxiOrderRepository.findAll()) {

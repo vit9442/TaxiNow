@@ -28,11 +28,21 @@ public class Driver {
     @Column(name = "age", nullable = false)
     private Integer age;
 
+    @Column(name = "adress", nullable = false)
+    private String  adress;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @OneToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
 
     @OneToOne(mappedBy = "driver")
     private TaxiOrder taxiOrder;
+
+    @OneToOne
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    private Image image;
 
 }

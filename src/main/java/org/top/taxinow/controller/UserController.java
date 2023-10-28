@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.top.taxinow.entity.Car;
+
 import org.top.taxinow.entity.User;
 import org.top.taxinow.service.UserService;
 
@@ -19,20 +19,13 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-   @PostMapping("register")
-    public String register(
-            @RequestParam String name,
-            @RequestParam String login,
-            @RequestParam String password,
-            @RequestParam String passwordConfirmation,
-            RedirectAttributes model){
 
-       if(userService.register(name, login, password, passwordConfirmation)){
-            model.addFlashAttribute("successMessage", "Успешно");
-       }else {
-       model.addFlashAttribute("errMessage", "Ошибка");}
-    return "redirect:/login";
-   }
+    @GetMapping("/login/reg")
+    public String reg(){
+        return "registration";
+    }
+
+
 
     @GetMapping("user")
     public String findAll(Model model){

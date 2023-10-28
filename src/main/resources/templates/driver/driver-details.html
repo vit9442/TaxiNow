@@ -6,23 +6,226 @@
 </head>
 <body>
 <th:block th:replace="layout/page-layout.html :: page-header(page='driver')"/>
-<div class="card bg-dark text-light col-sm-5 mx-auto mt-2">
-  <div class="card-header">
-    Информация о водителе
-  </div>
-  <div th:if="${driver != null}" class="card-body">
-    <h5 class="card-title">[[${driver.name}]]</h5>
-    <p class="card-text">id: [[${driver.id}]].</p>
-    <p class="card-text">Номер телефона: [[${driver.phoneNumber}]].</p>
-    <p class="card-text">Возраст: [[${driver.age}]].</p>
-    Автомобиль: <a th:href="@{'/car/' + ${driver.car.id}}" class="card-text"> [[${driver.car.name}]].</a>
-    <p><a th:href="@{/driver}" class="btn btn-primary">К списку водителей</a></p>
-  </div>
-  <div th:if="${driver == null}" class="card-body">
-    <h5 class="card-title">Водитель отсутствует</h5>
-    <a th:href="@{/driver}" class="btn btn-primary">К списку водителей</a>
-  </div>
-</div>
+
+<section >
+
+    <div class="row justify-content-center mt-3 ">
+      <div class="col-lg-4 ">
+        <div class="card mb-4 bg-light ">
+          <div class="card-body text-center ">
+            <img th:if="${driver.image != null}" th:src="@{'data:image/jpeg;base64,' + ${driver.image.data}}" class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">[[${driver.name}]]</h5>
+            <p class="text-muted mb-1">Водитель</p>
+            <p class="text-muted mb-4">[[${driver.adress}]]</p>
+            <div class="d-flex justify-content-center mb-2">
+              <a th:href="@{'/driver/delete/' + ${driver.id}}" class="btn btn-danger">
+                Удалить
+              </a>
+              <a th:href="@{'/driver/update/' + ${driver.id}}" class="btn btn-primary">
+                Редактировать
+              </a>
+            </div>
+          </div>
+      </div>
+
+
+          <div class="card mb-4 bg-light w-auto">
+            <div class="card-body ">
+              <div class="row text-center">
+              <div class="col-sm-3">
+                <a th:href="@{'/car/' + ${driver.car.id}}" class="mb-0 link-opacity-50">Автомобиль</a>
+              </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Марка</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">[[${driver.car.name}]]</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Регистрацонный номер</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">[[${driver.car.registrationPlate}]]</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Цвет</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">[[${driver.car.color}]]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+
+      <div class="col-lg-4 ">
+        <div class="card mb-4 bg-light">
+          <div class="row text-center">
+            <div class="col-sm-3">
+              <p class=" mb-0 link-opacity-50" >Информация о водителе</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">ФИО</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${driver.name}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${driver.email}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Возраст</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${driver.age}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Телефон</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${driver.phoneNumber}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Адрес</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">[[${driver.adress}]]</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Автомобиль</p>
+              </div>
+              <div class="col-sm-9">
+                <a th:href="@{'/car/' + ${driver.car.id}}" class="card-text"> [[${driver.car.name}]]</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      <div th:if="${driver.taxiOrder == null}" class="card h-25 text-center align-items-center bg-light">
+        <div class="row text-center justify-content-center align-items-center m-5">
+          <div class="">
+            <h4>Заказов нет</h4>
+          </div>
+        </div>
+      </div>
+      <div th:if="${driver.taxiOrder != null}" class="card mb-4 bg-light">
+        <div class="card-body">
+          <div class="row text-center">
+            <div class="col-sm-3">
+              <p class="mb-0">Заказ</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Номер заказа</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">[[${driver.taxiOrder.id}]]</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Начальный адрес</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">[[${driver.taxiOrder.initialAdress}]]</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Пункт назначения</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">[[${driver.taxiOrder.finalAdress}]]</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Цена</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">[[${driver.taxiOrder.price}]]</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Время</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">[[${driver.taxiOrder.time}]]</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+
+    </div>
+
+</section>
+
+
+
+
+<!--<div class="card bg-dark text-light col-sm-5 mx-auto mt-2">-->
+<!--  <div class="card-header">-->
+<!--    Информация о водителе-->
+<!--  </div>-->
+<!--  <div th:if="${driver != null}" class="card-body">-->
+<!--    <h5 class="card-title">[[${driver.name}]]</h5>-->
+<!--    <p class="card-text">id: [[${driver.id}]].</p>-->
+<!--    <p class="card-text">Номер телефона: [[${driver.phoneNumber}]].</p>-->
+<!--    <p class="card-text">Возраст: [[${driver.age}]].</p>-->
+<!--    Автомобиль: <a th:href="@{'/car/' + ${driver.car.id}}" class="card-text"> [[${driver.car.name}]].</a>-->
+<!--    <p><a th:href="@{/driver}" class="btn btn-primary">К списку водителей</a></p>-->
+<!--  </div>-->
+<!--  <div th:if="${driver == null}" class="card-body">-->
+<!--    <h5 class="card-title">Водитель отсутствует</h5>-->
+<!--    <a th:href="@{/driver}" class="btn btn-primary">К списку водителей</a>-->
+<!--  </div>-->
+<!--</div>-->
 <th:block th:replace="layout/page-layout.html :: page-footer"/>
 </body>
 </html>

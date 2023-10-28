@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -20,6 +21,10 @@ public class Image {
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
     private String data;
+
+
+    @OneToOne(mappedBy = "image")
+    private Driver driver;
 
     public Integer getId() {
         return id;
