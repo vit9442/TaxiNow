@@ -20,9 +20,19 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/login/reg")
-    public String reg(){
-        return "registration";
+    @PostMapping("register")
+    public String register(
+            @RequestParam String name,
+            @RequestParam String login,
+            @RequestParam String password,
+            @RequestParam String passwordConfirmation,
+            RedirectAttributes model){
+
+        if(userService.register(name, login, password, passwordConfirmation)){
+            model.addFlashAttribute("successMessage", "Успешно");
+        }else {
+            model.addFlashAttribute("errMessage", "Ошибка");}
+        return "redirect:/login";
     }
 
 
